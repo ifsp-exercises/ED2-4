@@ -49,7 +49,7 @@ Utilize o diagrama de classes apresentado à seguir para desenvolver uma aplica�
 
 ---
 
-# OPÇÕES
+# Opções
 
 0. Sair
 1. Cadastrar vendedor **1**
