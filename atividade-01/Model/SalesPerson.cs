@@ -8,8 +8,8 @@ namespace atividade_01.Models
     private static int lastIncludedId = 0;
     private static readonly int maximumOfSales = 31;
 
-    private int Id { get; set; }
-    private string Name { get; set; }
+    public int Id { get; private set; }
+    public string Name { get; private set; }
     private double CommissionPercentage { get; set; }
     public Sale[] Sales { get; private set; }
 
@@ -29,13 +29,15 @@ namespace atividade_01.Models
       this.Sales = new Sale[SalesPerson.maximumOfSales];
     }
 
-    public void RegisterSale(int day, Sale sale)
+    public void RegisterSale(Sale sale)
     {
-      if (this.Sales.Length == maximumOfSales) throw new Exception(
+      int quantityOfSales = this.Sales.Where(sale => !Equals(sale, null)).Count();
+
+      if (quantityOfSales == maximumOfSales) throw new Exception(
         $"The maximum of {SalesPerson.maximumOfSales} sales has been reached."
       );
 
-      this.Sales[this.Sales.Length] = sale;
+      this.Sales[quantityOfSales] = sale;
     }
 
     public double GetSalesValue() => this.Sales.Select(sale => sale.Price).Sum();
@@ -45,6 +47,8 @@ namespace atividade_01.Models
 
     public override bool Equals(object obj)
     {
+      if (Equals(obj, null)) return false;
+
       if (obj is not SalesPerson) return false;
 
       return this.Id.Equals(((SalesPerson)obj).Id);
@@ -52,7 +56,36 @@ namespace atividade_01.Models
 
     public override int GetHashCode() => this.Id;
 
-    public string ToJson() =>
-      $"{{\n  \"Id\": {this.Id},\n  \"Name\": \"{this.Name}\",\n  \"CommissionPercentage\": {this.CommissionPercentage},\n  \"Sales\": []\n}}";
+    public SalesPerson ClearNullSales()
+    {
+      SalesPerson cleanSalesPerson = new SalesPerson(Id);
+
+      cleanSalesPerson.Name = this.Name;
+      cleanSalesPerson.CommissionPercentage = this.CommissionPercentage;
+
+      cleanSalesPerson.Sales = this.Sales
+        .Where(sale => !Equals(sale, null)).ToArray();
+
+      return cleanSalesPerson;
+    }
+
+    public string ToJson()
+    {
+      double totalSalesValue = this.Sales
+        .Where(sale => !Equals(sale, null)).Select(sale => sale.Price).Sum();
+
+      double totalCommissionValue = this.Sales
+        .Where(sale => !Equals(sale, null))
+        .Select(sale => sale.Price * this.CommissionPercentage / 100).Sum();
+
+      string salesAverageValues = string.Join(
+        "\n  ",
+        this.Sales
+        .Where(sale => !Equals(sale, null))
+        .Select(sale => $"{{{sale.CalculateAveragePrice()}}},")
+      );
+
+      return $"{{\n  \"Id\": {this.Id},\n  \"Name\": \"{this.Name}\",\n  \"CommissionPercentage\": {this.CommissionPercentage},\n  \"totalSalesValue\": {totalSalesValue},\n  \"totalCommissionValue\": {totalCommissionValue},\n  \"salesAverageValues\": [\n    {salesAverageValues}\n  ]\n}}";
+    }
   }
 }

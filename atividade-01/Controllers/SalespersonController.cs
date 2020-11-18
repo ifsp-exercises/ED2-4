@@ -20,7 +20,8 @@ namespace atividade_01.Controllers
     {
       int countOfSalesPeople = this.SalesPeople.Where(sp => !Equals(sp, null)).Count();
 
-      if (countOfSalesPeople == 10){
+      if (countOfSalesPeople == 10)
+      {
         return false;
       }
       bool salesPersonExists = this.SalesPeople
@@ -47,6 +48,28 @@ namespace atividade_01.Controllers
 
       return true;
     }
+
+    public bool Update(SalesPerson updatedSalesPerson)
+    {
+      bool salesPersonExists = this.SalesPeople
+        .Any(salesPerson => updatedSalesPerson.Equals(salesPerson));
+
+      if (!salesPersonExists) return false;
+
+      this.SalesPeople = this.SalesPeople.Select(existingSalesPerson =>
+        updatedSalesPerson.Equals(existingSalesPerson)
+        ? updatedSalesPerson
+        : existingSalesPerson
+      ).ToArray();
+
+      return true;
+    }
+
+    public SalesPerson[] Index() => this.SalesPeople
+      .Where(salesPerson => !Equals(salesPerson, null))
+      .Select(salesPerson => salesPerson.ClearNullSales())
+      .ToArray();
+
     public SalesPerson Find(SalesPerson salesPerson) => this.SalesPeople
       .FirstOrDefault(sp => salesPerson.Equals(sp));
 

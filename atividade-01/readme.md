@@ -1,61 +1,64 @@
-<img src="http://www.brazilusamagazine.com/wp-content/uploads/2018/06/maior_em_obras-e1529758442917.jpg">
+<h3 align="center">
 
-UMA EMPRESA POSSUI EM SEU DEPARTAMENTO COMERCIAL, UMA EQUIPE COMPOSTA POR 10 VENDEDORES.
+<img width="64" alt="IFSP" src="https://avatars0.githubusercontent.com/u/62160025?s=200&v=4" />
 
-DENTRO DE UM MESMO MÊS, É FEITO DIARIAMENTE UM REGISTRO DA QUANTIDADE DE VENDAS REALIZADAS POR CADA UM DELES, BEM COMO O VALOR TOTAL DESSAS VENDAS.
+Atividade 01
 
-UTILIZE O DIAGRAMA DE CLASSES APRESENTADO À SEGUIR PARA DESENVOLVER UMA APLICAÇÃO COM AS OPÇÕES DESCRITAS ABAIXO:
+</h3>
 
+# Proposta
 
-------------------------------------
-| Venda                            |
-|----------------------------------|
-| - qtde: int                      |
-| - valor: double                  |
-|----------------------------------|
-| + valorMedio(): double           |
-------------------------------------
+Uma empresa possui em seu departamento comercial, uma equipe composta por 10 vendedores.
 
+Dentro de um mesmo mês, é feito diariamente um registro da quantidade de vendas realizadas por cada um deles, bem como o valor total dessas vendas.
 
-------------------------------------------------
+Utilize o diagrama de classes apresentado à seguir para desenvolver uma aplicação com as opções descritas abaixo:
+
+# Diagramas
+
+| Venda                              |
+| ---------------------------------- |
+| - qtde: int                        |
+| - valor: double                    |
+| ---------------------------------- |
+| + valorMedio(): double             |
+
+---
+
 | Vendedor                                     |
-|----------------------------------------------|
+| -------------------------------------------- |
 | - id: int                                    |
 | - nome: string                               |
 | - percComissao: double                       |
 | - asVendas: Venda[31]                        |
-|----------------------------------------------|
+| -----------------------                      |
 | + registrarVenda(int dia, Venda venda): void |
 | + valorVendas(): double                      |
 | + valorComissao(): double                    |
-------------------------------------------------
 
+---
 
-------------------------------------------------
-| Vendedores                                   |
-|----------------------------------------------|
-| - osVendedores: Vendedor[]                   |
-| - max: int                                   |
-| - qtde: int                                  |
-|----------------------------------------------|
-| + valorVendas(): double                      |
-| + valorComissao(): double                    |
-------------------------------------------------
+| Vendedores                 |
+| -------------------------- |
+| - osVendedores: Vendedor[] |
+| - max: int                 |
+| - qtde: int                |
+| -----------------------    |
+| + valorVendas(): double    |
+| + valorComissao(): double  |
 
+---
 
-OPÇÕES:
+# OPÇÕES
 
 0. Sair
-1. Cadastrar vendedor (*)
-2. Consultar vendedor (**)
-3. Excluir vendedor   (***)
+1. Cadastrar vendedor **Obs 1**
+2. Consultar vendedor **Obs 2**
+3. Excluir vendedor **Obs 3**
 4. Registrar venda
-5. Listar vendedores  (****)
+5. Listar vendedores **Obs 4**
 
-
-(*)     - Limitar o quantitativo de vendedores cadastrados (máximo 10).
-(**)   - Quando encontrado, deverá ser informado o id, nome, o valor total das vendas, o valor da comissão devida e
-           o valor médio das vendas diárias (de cada dia que houve registro de venda).
-(***)  - O vendedor só poderá ser excluído enquanto não houver nenhuma venda associada a ele.
-(****) - Deverá ser informado, para cada vendedor, o id, nome, valor total das vendas e o valor da comissão devida.
-           Ao final da listagem, esses valores deverão ser totalizados.
+**1**: Limitar o quantitativo de vendedores cadastrados (máximo 10).
+**2**: Quando encontrado, deverá ser informado o id, nome, o valor total das vendas, o valor da comissão devida e o valor médio das vendas diárias (de cada dia que houve registro de venda).
+**3**: O vendedor só poderá ser excluído enquanto não houver nenhuma venda associada a ele.
+**4**: Deverá ser informado, para cada vendedor, o id, nome, valor total das vendas e o valor da comissão devida. Ao final da listagem, esses valores deverão ser totalizados.

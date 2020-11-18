@@ -90,11 +90,11 @@ namespace atividade_01
             break;
 
           case 3:
-            salesHandler.HandleDeleteSalesPerson();
+            lastHandleExecutionResult = salesHandler.HandleDeleteSalesPerson();
             break;
 
           case 4:
-            salesHandler.HandleCreateSale();
+            lastHandleExecutionResult = salesHandler.HandleCreateSale();
             break;
 
           case 5:
