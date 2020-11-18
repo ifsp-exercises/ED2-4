@@ -1,3 +1,5 @@
+<img src="http://www.brazilusamagazine.com/wp-content/uploads/2018/06/maior_em_obras-e1529758442917.jpg">
+
 UMA EMPRESA POSSUI EM SEU DEPARTAMENTO COMERCIAL, UMA EQUIPE COMPOSTA POR 10 VENDEDORES.
 
 DENTRO DE UM MESMO MÊS, É FEITO DIARIAMENTE UM REGISTRO DA QUANTIDADE DE VENDAS REALIZADAS POR CADA UM DELES, BEM COMO O VALOR TOTAL DESSAS VENDAS.
@@ -6,7 +8,7 @@ UTILIZE O DIAGRAMA DE CLASSES APRESENTADO À SEGUIR PARA DESENVOLVER UMA APLICA�
 
 
 ------------------------------------
-| Venda                            | 
+| Venda                            |
 |----------------------------------|
 | - qtde: int                      |
 | - valor: double                  |
@@ -16,7 +18,7 @@ UTILIZE O DIAGRAMA DE CLASSES APRESENTADO À SEGUIR PARA DESENVOLVER UMA APLICA�
 
 
 ------------------------------------------------
-| Vendedor                                     | 
+| Vendedor                                     |
 |----------------------------------------------|
 | - id: int                                    |
 | - nome: string                               |
@@ -30,7 +32,7 @@ UTILIZE O DIAGRAMA DE CLASSES APRESENTADO À SEGUIR PARA DESENVOLVER UMA APLICA�
 
 
 ------------------------------------------------
-| Vendedores                                   | 
+| Vendedores                                   |
 |----------------------------------------------|
 | - osVendedores: Vendedor[]                   |
 | - max: int                                   |
@@ -52,7 +54,7 @@ OPÇÕES:
 
 
 (*)     - Limitar o quantitativo de vendedores cadastrados (máximo 10).
-(**)   - Quando encontrado, deverá ser informado o id, nome, o valor total das vendas, o valor da comissão devida e 
+(**)   - Quando encontrado, deverá ser informado o id, nome, o valor total das vendas, o valor da comissão devida e
            o valor médio das vendas diárias (de cada dia que houve registro de venda).
 (***)  - O vendedor só poderá ser excluído enquanto não houver nenhuma venda associada a ele.
 (****) - Deverá ser informado, para cada vendedor, o id, nome, valor total das vendas e o valor da comissão devida.
