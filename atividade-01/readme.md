@@ -52,13 +52,13 @@ Utilize o diagrama de classes apresentado à seguir para desenvolver uma aplica�
 # OPÇÕES
 
 0. Sair
-1. Cadastrar vendedor **Obs 1**
-2. Consultar vendedor **Obs 2**
-3. Excluir vendedor **Obs 3**
+1. Cadastrar vendedor **1**
+2. Consultar vendedor **2**
+3. Excluir vendedor **3**
 4. Registrar venda
-5. Listar vendedores **Obs 4**
+5. Listar vendedores **4**
 
-**1**: Limitar o quantitativo de vendedores cadastrados (máximo 10).
-**2**: Quando encontrado, deverá ser informado o id, nome, o valor total das vendas, o valor da comissão devida e o valor médio das vendas diárias (de cada dia que houve registro de venda).
-**3**: O vendedor só poderá ser excluído enquanto não houver nenhuma venda associada a ele.
-**4**: Deverá ser informado, para cada vendedor, o id, nome, valor total das vendas e o valor da comissão devida. Ao final da listagem, esses valores deverão ser totalizados.
+- **1**: Limitar o quantitativo de vendedores cadastrados (máximo 10).
+- **2**: Quando encontrado, deverá ser informado o id, nome, o valor total das vendas, o valor da comissão devida e o valor médio das vendas diárias (de cada dia que houve registro de venda).
+- **3**: O vendedor só poderá ser excluído enquanto não houver nenhuma venda associada a ele.
+- **4**: Deverá ser informado, para cada vendedor, o id, nome, valor total das vendas e o valor da comissão devida. Ao final da listagem, esses valores deverão ser totalizados.
