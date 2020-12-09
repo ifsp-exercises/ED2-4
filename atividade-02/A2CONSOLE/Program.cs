@@ -165,7 +165,12 @@ namespace A2CONSOLE
             break;
 
           case 5:
-            // salesHandler.HandleListSalesPeople();
+            foreach (Contact contact in contactsController.Book)
+              Console.WriteLine(contact.ToString());
+
+            Console.WriteLine();
+            Console.WriteLine("Pressione alguma tecla para continuar...");
+            Console.ReadKey();
             break;
         }
 

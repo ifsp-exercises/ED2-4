@@ -6,7 +6,7 @@ namespace A2CONSOLE.Controllers
 {
   public class ContactsController
   {
-    public List<Contact> Book { get; set; }
+    public List<Contact> Book { get; private set; }
 
     public ContactsController()
     {
