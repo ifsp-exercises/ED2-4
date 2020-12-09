@@ -29,8 +29,15 @@ namespace A2CONSOLE
       bool invalidOptionChosen = false;
       int chosenOption = 0;
 
+
+      string name = null, email = null, telephone = null;
+
       do
       {
+        name = null;
+        email = null;
+        telephone = null;
+
         if (invalidOptionChosen)
         {
           Console.ForegroundColor = ConsoleColor.Red;
@@ -67,13 +74,13 @@ namespace A2CONSOLE
         {
           case 1:
             Console.Write("Informe o nome do contato: ");
-            string name = Console.ReadLine();
+            name = Console.ReadLine();
 
             Console.Write("Informe o email do contato: ");
-            string email = Console.ReadLine();
+            email = Console.ReadLine();
 
             Console.Write("Informe o telefone do contato: ");
-            string telephone = Console.ReadLine();
+            telephone = Console.ReadLine();
 
             Contact newContact = new Contact(name, email, telephone);
             bool added = contactsController.Add(newContact);
@@ -82,7 +89,21 @@ namespace A2CONSOLE
             break;
 
           case 2:
-            // lastHandleExecutionResult = salesHandler.HandleFindSalesPerson();
+            Console.WriteLine("Digite o para pesquisar: ");
+            email = Console.ReadLine();
+
+            Contact contactToFind = new Contact(name: "", email, telephone: "");
+
+            Contact foundContact = contactsController.Find(contactToFind);
+
+            if (Equals(foundContact, null))
+            {
+              Console.WriteLine("Contato não encontrado.");
+            }
+            else
+            {
+              Console.WriteLine(foundContact.ToString());
+            }
             break;
 
           case 3:
