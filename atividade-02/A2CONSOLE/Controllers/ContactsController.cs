@@ -15,24 +15,37 @@ namespace A2CONSOLE.Controllers
 
     public bool Add(Contact contact)
     {
-      throw new NotImplementedException();
+      this.Book.Add(contact);
+
+      return this.Book.IndexOf(contact) != -1;
     }
 
-    public bool Find(Contact contact)
-    {
-      throw new NotImplementedException();
-    }
+    public bool Find(Contact contact) => this.Book.IndexOf(contact) != -1;
 
     public bool Update(Contact contact)
     {
-      throw new NotImplementedException();
+      int indexOfContact = -1;
+
+      indexOfContact = this.Book.IndexOf(contact);
+
+      if (indexOfContact == -1) return false;
+
+      this.Book.Insert(indexOfContact, contact);
+
+      return true;
     }
 
     public bool Delete(Contact contact)
     {
-      throw new NotImplementedException();
+      int indexOfContact = -1;
+
+      indexOfContact = this.Book.IndexOf(contact);
+
+      if (indexOfContact == -1) return false;
+
+      this.Book.RemoveAt(indexOfContact);
+
+      return true;
     }
-
-
   }
 }
