@@ -2,9 +2,9 @@ namespace A2CONSOLE.Classes
 {
   public class Date
   {
-    public int Day { get; private set; }
-    public int Month { get; private set; }
-    public int Year { get; private set; }
+    public int Day { get; set; }
+    public int Month { get; set; }
+    public int Year { get; set; }
 
     public void SetDate(int day, int month, int year)
     {

@@ -4,9 +4,9 @@ namespace A2CONSOLE.Classes
 {
   public class Contact
   {
-    public string Name { get; private set; }
-    public string Email { get; private set; }
-    public string Telephone { get; private set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Telephone { get; set; }
     public Date Birthdate { get; set; }
 
     public Contact(string name, string email, string telephone)

@@ -29,7 +29,7 @@ namespace A2CONSOLE
       bool invalidOptionChosen = false;
       int chosenOption = 0;
 
-
+      Contact foundContact = null, contactToFind = null;
       string name = null, email = null, telephone = null;
 
       do
@@ -37,6 +37,8 @@ namespace A2CONSOLE
         name = null;
         email = null;
         telephone = null;
+        foundContact = null;
+        contactToFind = null;
 
         if (invalidOptionChosen)
         {
@@ -89,12 +91,12 @@ namespace A2CONSOLE
             break;
 
           case 2:
-            Console.WriteLine("Digite o para pesquisar: ");
+            Console.WriteLine("Digite o email do contato a pesquisar: ");
             email = Console.ReadLine();
 
-            Contact contactToFind = new Contact(name: "", email, telephone: "");
+            contactToFind = new Contact(name: "", email, telephone: "");
 
-            Contact foundContact = contactsController.Find(contactToFind);
+            foundContact = contactsController.Find(contactToFind);
 
             if (Equals(foundContact, null))
             {
@@ -107,7 +109,40 @@ namespace A2CONSOLE
             break;
 
           case 3:
-            // lastHandleExecutionResult = salesHandler.HandleDeleteSalesPerson();
+            Console.Write("Digite o email do contato a atualizar: ");
+            email = Console.ReadLine();
+
+            contactToFind = new Contact(name: "", email, telephone: "");
+
+            foundContact = contactsController.Find(contactToFind);
+
+            if (Equals(foundContact, null))
+            {
+              Console.WriteLine("Contato não encontrado.");
+              break;
+            }
+
+            Console.Write("Digite o novo nome: ");
+            foundContact.Name = Console.ReadLine();
+
+            Console.Write("Digite o novo email: ");
+            foundContact.Email = Console.ReadLine();
+
+            Console.Write("Digite o novo telefone: ");
+            foundContact.Telephone = Console.ReadLine();
+
+            Console.Write("Digite o ano de nascimento: ");
+            foundContact.Birthdate.Year = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o mês de nascimento: ");
+            foundContact.Birthdate.Month = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o dia de nascimento: ");
+            foundContact.Birthdate.Day = int.Parse(Console.ReadLine());
+
+            bool updated = contactsController.Update(foundContact);
+
+            if (!updated) throw new Exception($"An error occurred while updating contact: {foundContact.ToString()}");
             break;
 
           case 4:
