@@ -20,7 +20,8 @@ namespace A2CONSOLE.Controllers
       return this.Book.IndexOf(contact) != -1;
     }
 
-    public bool Find(Contact contact) => this.Book.IndexOf(contact) != -1;
+    public Contact Find(Contact contact) =>
+      this.Book.Find(cont => Equals(cont, contact));
 
     public bool Update(Contact contact)
     {
