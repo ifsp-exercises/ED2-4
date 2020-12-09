@@ -9,6 +9,13 @@ namespace A2CONSOLE.Classes
     public string Telephone { get; private set; }
     public Date Birthdate { get; set; }
 
+    public Contact(string name, string email, string telephone)
+    {
+        this.Name = name;
+        this.Email = email;
+        this.Telephone = telephone;
+    }
+
     public int GetAge()
     {
       DateTime today = DateTime.Now;
