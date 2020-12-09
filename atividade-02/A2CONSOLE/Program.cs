@@ -146,7 +146,22 @@ namespace A2CONSOLE
             break;
 
           case 4:
-            // lastHandleExecutionResult = salesHandler.HandleCreateSale();
+            Console.Write("Digite o email do contato a excluir: ");
+            email = Console.ReadLine();
+
+            contactToFind = new Contact(name: "", email, telephone: "");
+
+            foundContact = contactsController.Find(contactToFind);
+
+            if (Equals(foundContact, null))
+            {
+              Console.WriteLine("Contato não encontrado.");
+              break;
+            }
+
+            bool deleted = contactsController.Delete(foundContact);
+
+            if (!deleted) throw new Exception($"An error occurred while updating contact: {foundContact.ToString()}");
             break;
 
           case 5:
