@@ -165,7 +165,7 @@ namespace A2CONSOLE
             break;
 
           case 5:
-            foreach (Contact contact in contactsController.Book)
+            foreach (Contact contact in contactsController.List())
               Console.WriteLine(contact.ToString());
 
             Console.WriteLine();

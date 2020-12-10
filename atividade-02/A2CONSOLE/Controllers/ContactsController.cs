@@ -6,7 +6,7 @@ namespace A2CONSOLE.Controllers
 {
   public class ContactsController
   {
-    public List<Contact> Book { get; private set; }
+    private readonly List<Contact> Book;
 
     public ContactsController()
     {
@@ -19,6 +19,8 @@ namespace A2CONSOLE.Controllers
 
       return this.Book.IndexOf(contact) != -1;
     }
+
+    public List<Contact> List() => this.Book;
 
     public Contact Find(Contact contact) =>
       this.Book.Find(cont => Equals(cont, contact));
