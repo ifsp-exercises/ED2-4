@@ -23,6 +23,27 @@ namespace Library.Domain.Entities
     public string Editora { get; private set; }
     public IReadOnlyCollection<Exemplar> Exemplares { get => _exemplares.ToArray(); }
 
+    public bool ChecarExemplarEmprestado(int tombo)
+    {
+      return !this._exemplares.Where(pre => pre.Tombo == tombo).First().Disponivel();
+    }
+
+    public int EmprestarExemplar()
+    {
+      var exemplar = Exemplares.Where(pre => pre.Disponivel()).First();
+
+      exemplar.Emprestar();
+
+      return exemplar.Tombo;
+    }
+
+    public void DevolverExemplar(int tombo)
+    {
+      var exemplar = Exemplares.Where(pre => pre.Tombo == tombo).First();
+
+      exemplar.Devolver();
+    }
+
     public void AdicionarExemplar(Exemplar exemplar)
     {
       _exemplares.Add(exemplar);

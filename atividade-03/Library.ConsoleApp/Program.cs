@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Library.Domain.Controllers;
+using Library.Domain.Entities;
 
 namespace Library.ConsoleApp
 {
@@ -30,6 +31,9 @@ namespace Library.ConsoleApp
       bool invalidOptionChosen = false;
       int chosenOption = 0;
 
+      Livro livroEncontrado;
+      string titulo, autor, editora;
+      int isbn, tombo, tomboExemplarEmprestado;
 
       do
       {
@@ -68,27 +72,132 @@ namespace Library.ConsoleApp
         switch (chosenOption)
         {
           case 1:
-            Console.WriteLine("Case 1");
+            Console.Write("Informe o ISBN do livro: ");
+            int.TryParse(Console.ReadLine(), out isbn);
+
+            Console.Write("Informe o título do livro: ");
+            titulo = Console.ReadLine();
+
+            Console.Write("Informe o autor do livro: ");
+            autor = Console.ReadLine();
+
+            Console.Write("Informe a editora do livro: ");
+            editora = Console.ReadLine();
+
+
+            var livro = new Livro(isbn, titulo, autor, editora);
+
+            livroController.Adicionar(livro);
             break;
 
           case 2:
-            Console.WriteLine("Case 2");
+            Console.Write("Informe o ISBN do livro: ");
+            int.TryParse(Console.ReadLine(), out isbn);
+
+            livroEncontrado = livroController.Pesquisar(new Livro(isbn, "", "", ""));
+
+            if (livroEncontrado != null)
+              Console.WriteLine($"Livro encontrado: {livroEncontrado.Titulo}");
+            else
+              Console.WriteLine("Livro não encontrado");
+
+            Console.WriteLine();
+
+            Console.Write("Digite algum tecla para continuar...");
+            Console.ReadKey();
             break;
 
           case 3:
-            Console.WriteLine("Case 3");
+            Console.Write("Informe o ISBN do livro: ");
+            int.TryParse(Console.ReadLine(), out isbn);
+
+            livroEncontrado = livroController.Pesquisar(new Livro(isbn, "", "", ""));
+
+            if (livroEncontrado != null)
+              Console.WriteLine($"Livro encontrado: {livroEncontrado.Titulo}");
+            else
+              Console.WriteLine("Livro não encontrado");
+
+            Console.WriteLine();
+
+            Console.Write("Digite algum tecla para continuar...");
+            Console.ReadKey();
             break;
 
           case 4:
-            Console.WriteLine("Case 4");
+            Console.Write("Informe o ISBN do livro: ");
+            int.TryParse(Console.ReadLine(), out isbn);
+
+            livroEncontrado = livroController.Pesquisar(new Livro(isbn, "", "", ""));
+
+            if (livroEncontrado == null)
+            {
+              Console.WriteLine("Livro não encontrado");
+              Console.Write("Digite algum tecla para continuar...");
+              Console.ReadKey();
+              break;
+            }
+
+            Console.Write("Informe o tombo do livro: ");
+            int.TryParse(Console.ReadLine(), out tombo);
+
+            var exemplar = new Exemplar(tombo);
+            livroEncontrado.AdicionarExemplar(exemplar);
             break;
 
           case 5:
-            Console.WriteLine("Case 5");
+            Console.Write("Informe o ISBN do livro: ");
+            int.TryParse(Console.ReadLine(), out isbn);
+
+            livroEncontrado = livroController.Pesquisar(new Livro(isbn, "", "", ""));
+
+            if (livroEncontrado == null)
+            {
+              Console.WriteLine("Livro não encontrado");
+              Console.Write("Digite algum tecla para continuar...");
+              Console.ReadKey();
+              break;
+            }
+
+            if (livroEncontrado.QtdeDisponiveis() > 0)
+            {
+              tomboExemplarEmprestado = livroEncontrado.EmprestarExemplar();
+
+              Console.WriteLine("Guarde o tombo do livro para devolver.");
+              Console.WriteLine($"Tombo do livro: {tomboExemplarEmprestado}");
+            }
+            else
+            {
+              Console.WriteLine("Livro não disponível");
+            }
+
+            Console.Write("Digite algum tecla para continuar...");
+            Console.ReadKey();
+
             break;
 
           case 6:
-            Console.WriteLine("Case 6");
+            Console.Write("Informe o ISBN do livro: ");
+            int.TryParse(Console.ReadLine(), out isbn);
+
+            livroEncontrado = livroController.Pesquisar(new Livro(isbn, "", "", ""));
+
+            if (livroEncontrado == null)
+            {
+              Console.WriteLine("Livro não encontrado");
+              Console.Write("Digite algum tecla para continuar...");
+              Console.ReadKey();
+              break;
+            }
+
+            Console.Write("Informe o tombo do exemplar: ");
+            int.TryParse(Console.ReadLine(), out tomboExemplarEmprestado);
+
+            if (livroEncontrado.ChecarExemplarEmprestado(tomboExemplarEmprestado))
+              livroEncontrado.DevolverExemplar(tomboExemplarEmprestado);
+            else
+              Console.WriteLine("Livro não está emprestado.");
+
             break;
         }
 
@@ -97,3 +206,13 @@ namespace Library.ConsoleApp
     }
   }
 }
+
+
+/*
+* . Informar dos dados básicos do livro com as qtdes:
+    total de exemplares, de exemplares disponíveis,
+    de empréstimos e o respectivo percentual de
+    disponibilidade do título
+**. Informando, além dos dados acima, os detalhes dos
+    seus exemplares e respectivos empréstimos
+    */
