@@ -97,11 +97,14 @@ namespace Library.ConsoleApp
             livroEncontrado = livroController.Pesquisar(new Livro(isbn, "", "", ""));
 
             if (livroEncontrado != null)
-              Console.WriteLine($"Livro encontrado: {livroEncontrado.Titulo}");
+              Console.WriteLine(""
+                + $"Total de exemplares: {livroEncontrado.Exemplares.Count} \n"
+                + $"Total de exemplares disponíveis: {livroEncontrado.QtdeDisponiveis()} \n"
+                + $"Total de empréstimos: {livroEncontrado.QtdeEmprestimos()} \n"
+                + $"Percentual de disponibilidade: {livroEncontrado.PercDisponibilidade()} %"
+              );
             else
-              Console.WriteLine("Livro não encontrado");
-
-            Console.WriteLine();
+              Console.WriteLine();
 
             Console.Write("Digite algum tecla para continuar...");
             Console.ReadKey();
@@ -114,7 +117,22 @@ namespace Library.ConsoleApp
             livroEncontrado = livroController.Pesquisar(new Livro(isbn, "", "", ""));
 
             if (livroEncontrado != null)
-              Console.WriteLine($"Livro encontrado: {livroEncontrado.Titulo}");
+            {
+              Console.WriteLine(""
+                + $"Total de exemplares: {livroEncontrado.Exemplares.Count} \n"
+                + $"Total de exemplares disponíveis: {livroEncontrado.QtdeDisponiveis()} \n"
+                + $"Total de empréstimos: {livroEncontrado.QtdeEmprestimos()} \n"
+                + $"Percentual de disponibilidade: {livroEncontrado.PercDisponibilidade()} %"
+              );
+
+              foreach (var exe in livroEncontrado.Exemplares)
+                Console.WriteLine(""
+                  + $"Exemplar de tombo: ${exe.Tombo} \n"
+                  + $"Disponível: {(exe.Disponivel() ? "Sim" : "Não")} \n"
+                  + $"Quantidade de emprestimos: ${exe.QtdeEmprestimos()} \n"
+                  + "\n"
+                );
+            }
             else
               Console.WriteLine("Livro não encontrado");
 
@@ -206,13 +224,3 @@ namespace Library.ConsoleApp
     }
   }
 }
-
-
-/*
-* . Informar dos dados básicos do livro com as qtdes:
-    total de exemplares, de exemplares disponíveis,
-    de empréstimos e o respectivo percentual de
-    disponibilidade do título
-**. Informando, além dos dados acima, os detalhes dos
-    seus exemplares e respectivos empréstimos
-    */

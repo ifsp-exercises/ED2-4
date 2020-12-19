@@ -73,6 +73,9 @@ namespace Library.Domain.Entities
 
     public double PercDisponibilidade()
     {
+      if(QtdeExemplares() == 0)
+        return 0;
+
       return (QtdeDisponiveis() / QtdeExemplares()) * 100;
     }
 
