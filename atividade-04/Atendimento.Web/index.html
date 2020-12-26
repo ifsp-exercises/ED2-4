@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Atendimento</title>
+  </head>
+  <body>
+    <main id="app">
+      <div class="left-container">
+        <button name="generate-key-button">Gerar</button>
+        <textarea readonly name="senhas" cols="30" rows="10"></textarea>
+      </div>
+
+      <div class="middle-container">
+        <span>Quantidade de guichês</span>
+        <strong name="qtd-guiches">0</strong>
+        <button name="add-guiche-button">Adicionar</button>
+      </div>
+
+      <div class="right-container">
+        <div>
+          <div>
+            <label for="guiche-select">Guiche: </label>
+            <select id="guiche-select">
+              <option value="0" selected disabled>Selecione</option>
+              <optgroup></optgroup>
+            </select>
+          </div>
+
+          <button name="call-key-button">Chamar</button>
+        </div>
+
+        <textarea readonly name="atendimentos" cols="30" rows="10"></textarea>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
