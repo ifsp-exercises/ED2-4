@@ -39,13 +39,13 @@ namespace Atendimento.Domain.Controllers
 
     [HttpPost]
     [Route("guiche")]
-    public Guiche Adicionar()
+    public IEnumerable<Guiche> Adicionar()
     {
       var guiche = new Guiche();
 
       _listaGuiches.Add(guiche);
 
-      return guiche;
+      return _listaGuiches;
     }
 
     [HttpGet]
