@@ -4,18 +4,21 @@ namespace Atendimento.Domain.Entities
 {
   public class Guiche
   {
-    private readonly int _id;
+    private static int _promixoId = 0;
+    public int Id { get; }
     private readonly Queue<Senha> _atendimentos;
+
+    public IReadOnlyCollection<Senha> Atendimentos { get => _atendimentos.ToArray(); }
 
     public Guiche()
     {
-      _id = 0;
+      Id = ++_promixoId;
       _atendimentos = new Queue<Senha>();
     }
 
     public Guiche(int id) : this()
     {
-      _id = id;
+      Id = id;
     }
 
     public bool Chamar(Queue<Senha> filaSenhas)
@@ -25,6 +28,7 @@ namespace Atendimento.Domain.Entities
       if (senhaRetirada == null)
         return false;
 
+      senhaRetirada.AtualizarDataAtendimento();
       _atendimentos.Enqueue(senhaRetirada);
 
       return true;

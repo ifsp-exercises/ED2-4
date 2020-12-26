@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Atendimento.Domain.Entities;
 
 namespace Atendimento.Domain.Controllers
@@ -6,15 +7,18 @@ namespace Atendimento.Domain.Controllers
   public class SenhaController
   {
     private int _proximoAtendimento;
-    private readonly Queue<Senha> _filaSenhas;
+    public readonly Queue<Senha> FilaSenhas;
 
     public SenhaController()
     {
       _proximoAtendimento = 1;
-      _filaSenhas = new Queue<Senha>();
+      FilaSenhas = new Queue<Senha>();
     }
 
-    public void Gerar() => 
-      _filaSenhas.Enqueue(new Senha(_proximoAtendimento++));
+    public Senha Gerar(){
+      FilaSenhas.Enqueue(new Senha(_proximoAtendimento++));
+
+      return FilaSenhas.Last();
+    }
   }
 }
