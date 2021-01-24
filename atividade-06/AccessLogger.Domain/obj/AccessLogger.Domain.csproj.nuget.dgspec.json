@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "restore": {
+    "/mnt/3B362B907D64FA9E/www/ifsp/ED2-4/atividade-06/AccessLogger.Domain/AccessLogger.Domain.csproj": {}
+  },
+  "projects": {
+    "/mnt/3B362B907D64FA9E/www/ifsp/ED2-4/atividade-06/AccessLogger.Domain/AccessLogger.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/mnt/3B362B907D64FA9E/www/ifsp/ED2-4/atividade-06/AccessLogger.Domain/AccessLogger.Domain.csproj",
+        "projectName": "AccessLogger.Domain",
+        "projectPath": "/mnt/3B362B907D64FA9E/www/ifsp/ED2-4/atividade-06/AccessLogger.Domain/AccessLogger.Domain.csproj",
+        "packagesPath": "/home/angelo/.nuget/packages/",
+        "outputPath": "/mnt/3B362B907D64FA9E/www/ifsp/ED2-4/atividade-06/AccessLogger.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/angelo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
